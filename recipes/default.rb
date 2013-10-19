@@ -16,3 +16,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+include_recipe "apache2"
+include_recipe "openldap::server"
+
+package "phpldapadmin"
+
+##TODO search for ldap server and set according ip address in config
+template "/etc/phpldapadmin/config.php" do
+  owner "root"
+  group "www-data"
+  mode 0640
+end
