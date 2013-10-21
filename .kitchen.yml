@@ -9,7 +9,7 @@ platforms:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
     network:
-    - ["forwarded_port", {guest: 80, host: 8080, guest: 443, host: 8443}]
+    - ["forwarded_port", {guest: 80, host: 8080}]
   run_list:
   - recipe[apt]
 - name: ubuntu-10.04
