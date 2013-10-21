@@ -8,6 +8,10 @@ platforms:
   driver_config:
     box: opscode-ubuntu-12.04
     box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
+    network:
+    - ["forwarded_port", {guest: 80, host: 8080, guest: 443, host: 8443}]
+  run_list:
+  - recipe[apt]
 - name: ubuntu-10.04
   driver_config:
     box: opscode-ubuntu-10.04
@@ -23,5 +27,12 @@ platforms:
 
 suites:
 - name: default
-  run_list: ["recipe[phpldapadmin]"]
-  attributes: {}
+  run_list: 
+    - recipe[phpldapadmin]
+  attributes:     
+    openldap:
+      rootpw: secretsauce
+      roothash: "{SSHA}6BjlvtSbVCL88li8IorkqMSofkLio58/"
+      basedn: "dc=example,dc=com"
+      server: "ldap.example.com"
+      preseed_dir: "/tmp/does_not_exist"
