@@ -28,3 +28,7 @@ template "/etc/phpldapadmin/config.php" do
   group "www-data"
   mode 0640
 end
+
+link "/etc/apache2/conf.d/phpldapadmin.conf" do
+  to "/etc/phpldapadmin/apache.conf"
+end
