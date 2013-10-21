@@ -13,5 +13,5 @@ $servers->setValue('server','name','LDAP Server of <%=node['openldap']['organisa
 $servers->setValue('server','host','127.0.0.1');
 $servers->setValue('server','base',array('<%=node['openldap']['basedn']%>'));
 $servers->setValue('login','auth_type','session');
-$servers->setValue('login','bind_id','<%=node['openldap']['admin_binddn']%>');
+$servers->setValue('login','bind_id','<%=node['openldap']['rootdn']%>');
 ?>
