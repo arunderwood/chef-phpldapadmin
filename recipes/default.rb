@@ -20,10 +20,14 @@
 include_recipe "apache2"
 
 if node['phpldapadmin']['super_secure']
+  if node['apache']['listen_ports'].include?('80')
+    node.set['apache']['listen_ports'] = node['apache']['listen_ports'] - ['80']
+  end
   node.set['apache']['mod_ssl']['cipher_suite'] = 'EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA256:EECDH+aRSA+RC4:EDH+aRSA:EECDH:RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS'
   include_recipe "apache2::mod_ssl"
   apache_site "default-ssl" #Providing certificate configuration
 end
+
 include_recipe "openldap::server"
 
 package "phpldapadmin"
