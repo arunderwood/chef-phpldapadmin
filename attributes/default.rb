@@ -18,3 +18,4 @@
 #
 
 default['phpldapadmin']['use_tls'] = false
+default['phpldapadmin']['super_secure'] = false

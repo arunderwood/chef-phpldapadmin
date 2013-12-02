@@ -19,9 +19,11 @@
 
 include_recipe "apache2"
 
-node.set['apache']['mod_ssl']['cipher_suite'] = 'EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA256:EECDH+aRSA+RC4:EDH+aRSA:EECDH:RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS'
-include_recipe "apache2::mod_ssl"
-apache_site "default-ssl" #Providing certificate configuration
+if node['phpldapadmin']['super_secure']
+  node.set['apache']['mod_ssl']['cipher_suite'] = 'EECDH+ECDSA+AESGCM:EECDH+aRSA+AESGCM:EECDH+ECDSA+SHA256:EECDH+aRSA+RC4:EDH+aRSA:EECDH:RC4:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!SRP:!DSS'
+  include_recipe "apache2::mod_ssl"
+  apache_site "default-ssl" #Providing certificate configuration
+end
 include_recipe "openldap::server"
 
 package "phpldapadmin"
