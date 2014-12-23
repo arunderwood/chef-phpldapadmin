@@ -20,3 +20,4 @@
 default['phpldapadmin']['use_tls'] = false
 default['phpldapadmin']['super_secure'] = false
 default['phpldapadmin']['login_type'] = 'dn'
+default['phpldapadmin']['openldap_pkg'] = 'openldap::server'
