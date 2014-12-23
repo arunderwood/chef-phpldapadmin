@@ -28,7 +28,9 @@ if node['phpldapadmin']['super_secure']
   apache_site "default-ssl" #Providing certificate configuration
 end
 
-include_recipe node['phpldapadmin']['openldap_pkg'] || "openldap::server"
+if node['phpldapadmin']['install_openldap']
+  include_recipe "openldap::server"
+end
 
 package "phpldapadmin"
 
