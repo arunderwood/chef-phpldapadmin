@@ -44,3 +44,7 @@ end
 link "/etc/apache2/conf-available/phpldapadmin.conf" do
   to "/etc/phpldapadmin/apache.conf"
 end
+
+link "/etc/apache2/sites-available/phpldapadmin.conf" do
+  to "/etc/phpldapadmin/apache.conf"
+end
