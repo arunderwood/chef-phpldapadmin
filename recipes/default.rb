@@ -41,6 +41,6 @@ template "/etc/phpldapadmin/config.php" do
   mode 0640
 end
 
-link "/etc/apache2/conf.d/phpldapadmin.conf" do
+link "/etc/apache2/conf-available/phpldapadmin.conf" do
   to "/etc/phpldapadmin/apache.conf"
 end
